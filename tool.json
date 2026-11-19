@@ -3,7 +3,13 @@
   "title": "Paper Cheque Trail",
   "description": "Compare the number, value and share of paper cheques issued by Canadian federal programs each month.",
   "category": "explorers",
-  "tags": ["cheques", "direct deposit", "Receiver General", "OAS", "Canada Pension Plan"],
+  "tags": [
+    "cheques",
+    "direct deposit",
+    "Receiver General",
+    "OAS",
+    "Canada Pension Plan"
+  ],
   "icon": "landmark",
   "url": "/paperchequetrail/",
   "source": "https://github.com/jsdyer/paperchequetrail",
@@ -12,7 +18,31 @@
   "data_info": {
     "mode": "snapshot",
     "detail": "The Receiver General publishes monthly domestic payment counts and amounts by department, product and payment method.",
-    "cadence": "Checked monthly",
-    "probes": [{"url": "https://coolcode.ca/paperchequetrail/data/index.json", "path": ["retrieved"], "label": "Source retrieved", "count_at": {"path":["row_count"], "unit":"payment records"}}]
+    "cadence": "Monthly",
+    "probes": [
+      {
+        "url": "https://coolcode.ca/paperchequetrail/data/index.json",
+        "path": [
+          "retrieved"
+        ],
+        "label": "Source retrieved",
+        "count_at": {
+          "path": [
+            "row_count"
+          ],
+          "unit": "payment records"
+        }
+      },
+      {
+        "url": "https://coolcode.ca/paperchequetrail/data/index.json",
+        "label": "Payment months",
+        "path": [
+          "start"
+        ],
+        "end_path": [
+          "through"
+        ]
+      }
+    ]
   }
 }
