@@ -1,33 +1,17 @@
 <!doctype html>
-<html lang="en-CA">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="{{DESCRIPTION}}">
-  <title>{{TITLE}} · CoolCode</title>
-  <link rel="stylesheet" href="./style.css">
-  <script type="module" src="./app.mjs"></script>
-</head>
-<body data-tool-id="{{TOOL_ID}}">
-  <a class="skip" href="#main">Skip to content</a>
-  <header><a href="https://coolcode.ca/">← CoolCode.ca</a><a href="{{SOURCE_URL}}">Source &amp; instructions ↗</a></header>
-  <main id="main">
-    <p class="eyebrow">Browser tool starter</p>
-    <h1>{{TITLE}}</h1>
-    <p class="intro">{{DESCRIPTION}}</p>
-    <section aria-labelledby="example-title">
-      <h2 id="example-title">Clean a list</h2>
-      <p>Trim spaces, skip blank lines and remove exact duplicates. Capitalization stays distinct.</p>
-      <div class="panels">
-        <div><label for="input">Your lines</label><textarea id="input" rows="10" maxlength="100000" spellcheck="false" placeholder="Paste one item per line"></textarea></div>
-        <div><label for="output">Cleaned lines</label><textarea id="output" rows="10" readonly spellcheck="false"></textarea></div>
-      </div>
-      <div class="actions"><button id="sample" type="button">Load example</button><button id="clear" type="button">Clear</button><button id="copy" type="button" hidden>Copy result</button></div>
-      <p id="status" role="status" aria-live="polite">Paste a list to begin.</p>
-      <noscript><p>This tool needs JavaScript to process your text. The source is available above.</p></noscript>
-    </section>
-    <aside aria-label="Privacy"><strong>Stays on your device.</strong> This example makes no API requests and does not save your text. Reloading clears it.</aside>
-  </main>
-  <footer>Part of <a href="https://coolcode.ca/">the CoolCode collection</a>.</footer>
-</body>
-</html>
+<html lang="en-CA"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="{{DESCRIPTION}}"><title>{{TITLE}} · CoolCode</title><link rel="stylesheet" href="./style.css"><script type="module" src="./app.mjs"></script></head>
+<body data-tool-id="{{TOOL_ID}}"><a class="skip" href="#main">Skip to ledger</a>
+<header><nav><a href="https://coolcode.ca/">← CoolCode</a><a href="{{SOURCE_URL}}">Source &amp; guide ↗</a></nav>
+<div class="mast"><p>Receiver General for Canada</p><h1>{{TITLE}}</h1><p class="lead">Which federal programs still issue paper cheques? Compare the monthly cheque count, dollar value and share of domestic payments.</p></div></header>
+<main id="main"><p role="status" id="status">Opening the payment ledger…</p>
+<section class="controls" aria-label="Choose records">
+<label>First program<select id="first"></select></label><label>Compare with<select id="second"></select></label>
+<label>Payment month<select id="period"></select></label><label>Measure<select id="measure"><option value="count">Cheques issued</option><option value="amount">Cheque value (CAD)</option><option value="share">Share of payment count</option><option value="valueShare">Share of payment value</option></select></label>
+</section><div id="results" hidden><div id="cards" aria-live="polite"></div>
+<section class="sheet"><div class="sectionhead"><h2>Monthly history</h2><label>Look back<select id="window"><option value="24">24 months</option><option value="12">12 months</option><option value="all">Full history</option></select></label></div>
+<div id="legend"></div><div id="chart"></div><p class="fine">The chart ends at the selected month. A gap means the source has no comparable figure for that month.</p>
+<details><summary>Monthly values and source rows</summary><p>Each row number identifies a record in the federal CSV for this edition. Download the selection to keep its department and product codes.</p><div class="scroll"><table><thead id="theads"></thead><tbody id="rows"></tbody></table></div></details>
+<button id="download" type="button">Download selected history (.csv)</button></section>
+<section class="sheet"><h2>How to read this ledger</h2><p>Count share divides the number of cheques issued by all domestic payments for that department and product in the same month. Value share uses the Canadian-dollar amounts. A person can receive several payments. Delivery and cashing dates are outside this file.</p><p>A fiscal year begins in April. October is fiscal month 7. Codes keep similarly named products and departments separate. An absent row is shown as unavailable. A published zero is shown as zero.</p>
+<p id="edition"></p><p><a id="csvsource">Domestic payments CSV</a> · <a id="guide">Product codes &amp; definitions</a> · <a href="https://www.ourcommons.ca/written-questions/45-1/Q-663">Parliamentary question Q-663</a></p></section></div>
+<noscript>Enable JavaScript to explore the ledger, or download the <a href="https://donnees-data.tpsgc-pwgsc.gc.ca/ba1/domestiquespaie-domesticpay/domestiquespaie-domesticpay.csv">domestic payments CSV</a>.</noscript></main></body></html>

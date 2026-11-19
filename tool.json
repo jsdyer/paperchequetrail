@@ -1,16 +1,18 @@
 {
-  "id": "coolcode-tool-template",
-  "title": "CoolCode Tool Starter",
-  "description": "A browser-only example that trims lines and removes exact duplicates.",
-  "category": "security",
-  "tags": ["text", "lines", "duplicates"],
-  "icon": "scan-search",
-  "url": "/coolcode-tool-template/",
-  "source": "https://github.com/jsdyer/coolcode-tool-template",
+  "id": "paperchequetrail",
+  "title": "Paper Cheque Trail",
+  "description": "Compare the number, value and share of paper cheques issued by Canadian federal programs each month.",
+  "category": "explorers",
+  "tags": ["cheques", "direct deposit", "Receiver General", "OAS", "Canada Pension Plan"],
+  "icon": "landmark",
+  "url": "/paperchequetrail/",
+  "source": "https://github.com/jsdyer/paperchequetrail",
   "hosting": "project",
   "access": "browser",
   "data_info": {
-    "mode": "local",
-    "detail": "The browser reads the text you paste and compares its lines."
+    "mode": "snapshot",
+    "detail": "The Receiver General publishes monthly domestic payment counts and amounts by department, product and payment method.",
+    "cadence": "Checked monthly",
+    "probes": [{"url": "https://coolcode.ca/paperchequetrail/data/index.json", "path": ["retrieved"], "label": "Source retrieved", "count_at": {"path":["row_count"], "unit":"payment records"}}]
   }
 }
