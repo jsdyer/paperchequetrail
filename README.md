@@ -25,3 +25,11 @@ The launch edition contains 20,677 source rows, 243 department/product combinati
 A monthly GitHub Actions job retrieves both federal files, validates the schema, unique keys, fiscal intervals and payment-method totals, saves the validated edition and deploys it. The compressed source snapshot is versioned so checks and ordinary builds work offline. A failed import stops deployment.
 
 Run `python scripts/refresh.py` for a fresh edition, `node --test tests/*.test.mjs` and `python -m unittest discover -s tests` for checks, and `python scripts/build.py` to build. Preview with `python -m http.server --directory dist`.
+
+<!-- schedule-reliability -->
+## Schedule reliability
+
+Public GitHub repositories can have scheduled workflows disabled after 60 days of inactivity. A separate weekly [schedule guard](.github/workflows/schedule-guard.yml) calls GitHub's enable-workflow API for an explicit list of refresh workflows and itself. It can restore workflows disabled for inactivity, preserves manually disabled workflows, and runs independently of collection failures.
+
+This is an interim mitigation, not a scheduling guarantee: GitHub does not document active-workflow renewal as a permanent exemption, and scheduled runs can be delayed or dropped. A scheduler on our own Linux server is the planned independent trigger. The guard does not collect data, create dummy commits, or change source/check timestamps; successful collection and published data freshness still need monitoring.
+<!-- /schedule-reliability -->
